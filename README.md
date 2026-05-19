@@ -1,4 +1,4 @@
-# Simular Design
+# Simular Design System
 [![Skill](https://img.shields.io/badge/Sai-skill-16D342)](https://simular.ai) [![License](https://img.shields.io/badge/license-MIT-blue)](#license)
 
 Branding kit includes light + dark design tokens, type scale, fonts (Manrope, Adamina), the real 29-icon set, brand logos, and reference UI kits for the Sai product and the Simular marketing site.
