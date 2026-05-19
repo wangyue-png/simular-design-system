@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Status badges in context</title>
+<link rel="stylesheet" href="_card.css">
+</head>
+<body><div class="card-root">
+<style>
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .item { padding: 12px; background: var(--bgcard); border: 1px solid var(--b1); border-radius: 12px; display: flex; flex-direction: column; gap: 8px; }
+  .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .name { font: 600 13px/1.2 var(--font-sans); color: var(--t1); }
+  .meta { font: var(--t-meta); color: var(--t3); }
+  .badge { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; border-radius: 999px; font: 500 10.5px/1.3 var(--font-sans); white-space: nowrap; }
+  .dot   { width: 6px; height: 6px; border-radius: 999px; }
+  .b-running { background: var(--gs); color: var(--as); }
+  .b-wait    { background: var(--ams); color: #8a5b00; }
+  .b-done    { background: var(--gs); color: var(--g); }
+  @keyframes pulse-dot-anim {
+    0%,100% { opacity: 1; transform: scale(1) }
+    50%     { opacity: 0.4; transform: scale(0.9) }
+  }
+  .pulse { animation: pulse-dot-anim 1.4s ease-in-out infinite; }
+</style>
+<div class="grid">
+  <div class="item">
+    <div class="row"><div class="name">Lead sourcing</div><div class="badge b-running"><div class="dot pulse" style="background:var(--as)"></div>Running</div></div>
+    <div class="meta">Step 14 / 27 · 2 min ago</div>
+  </div>
+  <div class="item">
+    <div class="row"><div class="name">Send invoice</div><div class="badge b-wait"><div class="dot" style="background:var(--am)"></div>Approve</div></div>
+    <div class="meta">Awaiting confirmation</div>
+  </div>
+  <div class="item">
+    <div class="row"><div class="name">Format report</div><div class="badge b-done"><div class="dot" style="background:var(--g)"></div>Done</div></div>
+    <div class="meta">Completed in 4m 12s</div>
+  </div>
+</div>
+</div></body></html>

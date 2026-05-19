@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Borders</title>
+<link rel="stylesheet" href="_card.css">
+</head>
+<body><div class="card-root">
+<style>
+  .grid { display: grid; gap: 10px; }
+  .sw { display: flex; flex-direction: column; gap: 6px; }
+  .chip { height: 72px; border-radius: 10px; border: 1px solid var(--b1); }
+  .chip-lg { height: 86px; border-radius: 12px; padding: 10px 12px; display: flex; align-items: flex-end; }
+  .chip-hero { font: 700 22px/1 var(--font-sans); letter-spacing: -0.02em; }
+  .name { font: 600 12px/1.2 var(--font-sans); color: var(--t1); }
+  .tok  { font: 500 10.5px/1.2 var(--font-mono); color: var(--t3); text-transform: uppercase; letter-spacing: 0.04em; }
+  .hex  { font: 400 10.5px/1.2 var(--font-mono); color: var(--t3); }
+  .group { font: 600 9px/1 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--t3); margin-bottom: 2px; }
+
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .box { width: 100%; height: 70px; background: var(--bgcard); border-radius: 12px; }
+</style>
+<div class="grid">
+  <div class="sw"><div class="box" style="border:1px solid var(--b1)"></div><div class="name">b1 · hairline</div><div class="hex">#1f1f1f / #e2e2df</div></div>
+  <div class="sw"><div class="box" style="border:1px solid var(--b2)"></div><div class="name">b2 · default</div><div class="hex">#2a2a2a / #d0d0cc</div></div>
+</div>
+</div></body></html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Text scale</title>
+<link rel="stylesheet" href="_card.css">
+</head>
+<body><div class="card-root">
+<style>
+  .grid { display: grid; gap: 10px; }
+  .sw { display: flex; flex-direction: column; gap: 6px; }
+  .chip { height: 72px; border-radius: 10px; border: 1px solid var(--b1); }
+  .chip-lg { height: 86px; border-radius: 12px; padding: 10px 12px; display: flex; align-items: flex-end; }
+  .chip-hero { font: 700 22px/1 var(--font-sans); letter-spacing: -0.02em; }
+  .name { font: 600 12px/1.2 var(--font-sans); color: var(--t1); }
+  .tok  { font: 500 10.5px/1.2 var(--font-mono); color: var(--t3); text-transform: uppercase; letter-spacing: 0.04em; }
+  .hex  { font: 400 10.5px/1.2 var(--font-mono); color: var(--t3); }
+  .group { font: 600 9px/1 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--t3); margin-bottom: 2px; }
+
+  .grid { grid-template-columns: repeat(4, 1fr); }
+  .dot { width: 100%; height: 56px; border-radius: 10px; }
+  .sample { font: 600 24px/1 var(--font-sans); }
+</style>
+<div class="grid">
+  <div class="sw"><div class="dot" style="background:var(--t1)"></div><div class="name">t1 · primary</div><div class="hex">#fafafa dark · #1a1a1e light</div><div class="sample" style="color:var(--t1)">Aa</div></div>
+  <div class="sw"><div class="dot" style="background:var(--t2)"></div><div class="name">t2 · secondary</div><div class="hex">#d4d4d4 / #3c3c44</div><div class="sample" style="color:var(--t2)">Aa</div></div>
+  <div class="sw"><div class="dot" style="background:var(--t3)"></div><div class="name">t3 · muted</div><div class="hex">#a3a3a3 / #6b6b73</div><div class="sample" style="color:var(--t3)">Aa</div></div>
+  <div class="sw"><div class="dot" style="background:var(--t4)"></div><div class="name">t4 · disabled</div><div class="hex">#737373 / #94948f</div><div class="sample" style="color:var(--t4)">Aa</div></div>
+</div>
+</div></body></html>

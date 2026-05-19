@@ -1,0 +1,363 @@
+/* ============================================================
+   Simular / Sai design tokens — SOURCE OF TRUTH
+   Generated from the real codebase (globals.css + tokens/_data.ts).
+   Last sync: 2026-05-19.
+
+   Naming convention (terse, from the real codebase):
+     bg / bg2 / bg3 / bg3h / bgi / bgcard ........ background scale
+     t1 / t2 / t3 / t4 ............................ text scale (1=primary)
+     b1 / b2 ...................................... borders
+     ab / abt ..................................... inverting button (dark<->light)
+     as / as2 / g / gt / gg / gs ................. accent / brand (lime green)
+     am / ams / amt ............................... amber (warning)
+     bl / bls / blt ............................... blue
+     cc / ccs / ccg / cct ......................... coral
+     teach / teach-bg / teach-subtle / teach-text   purple (learn-mode)
+     r ............................................ red (danger)
+     sc ........................................... card shadow
+
+   The full machine-readable export is at /tokens.json.
+   ============================================================ */
+
+/* ---------- Fonts ---------- */
+@font-face {
+  font-family: "Manrope";
+  src: url("./fonts/Manrope-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Adamina";
+  src: url("./fonts/Adamina-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+/* JetBrains Mono is loaded from CDN — pin via <link> in HTML files. */
+
+:root {
+  /* ============================================================
+     DEFAULT THEME = DARK (the Sai app is dark-first)
+     ============================================================ */
+
+  /* Backgrounds */
+  --bg:           #0c0c0c;
+  --bg2:          #111111;
+  --bg3:          #1a1a1a;
+  --bg3h:         #202020;
+  --bgcard:       #131313;
+  --bgi:          #1a1a1a;
+
+  /* Borders */
+  --b1:           #1f1f1f;
+  --b2:           #2a2a2a;
+
+  /* Text */
+  --t1:           #fafafa;
+  --t2:           #d4d4d4;
+  --t3:           #a3a3a3;
+  --t4:           #737373;
+
+  /* Inverting CTA button (--ab is the fill, --abt is the surface tinted variant) */
+  --ab:           #f9faf5;     /* button fill (light in dark mode) */
+  --abt:          #18181b;     /* tinted surface */
+  --abh:          #c5c5b8;     /* hover */
+
+  /* Accent — lime green (the brand) */
+  --as:           #16D342;     /* signature accent */
+  --as2:          #12B538;     /* hover/press on green surfaces */
+  --g:            #0FA635;     /* deeper green, used for icons + text on light */
+  --gt:           #0FA635;     /* accessible green text */
+  --gg:           rgba(22, 211, 66, 0.22);  /* 22% glow */
+  --gs:           rgba(22, 211, 66, 0.10);  /* 10% subtle */
+
+  /* Amber — warning / approval */
+  --am:           #FFAB3C;
+  --ams:          #fef3c7;
+  --amt:          #FFAB3C;
+
+  /* Blue */
+  --bl:           #0022FF;
+  --bls:          rgba(0, 34, 255, 0.12);
+  --blt:          #001ACC;
+
+  /* Coral (secondary accent) */
+  --cc:           #D4634B;
+  --ccs:          rgba(212, 99, 75, 0.14);
+  --ccg:          rgba(212, 99, 75, 0.28);
+  --cct:          #E08572;
+
+  /* Teach / Learn mode — purple */
+  --teach:        #8b5cf6;
+  --teach-text:   #a78bfa;
+  --teach-bg:     rgba(139, 92, 246, 0.20);
+  --teach-subtle: rgba(139, 92, 246, 0.10);
+
+  /* Red — destructive */
+  --r:            #ef4444;
+
+  /* OAuth surfaces (dark) */
+  --oauth-apple-bg:    #000000;
+  --oauth-apple-text:  #ffffff;
+  --oauth-google-bg:   #ffffff;
+  --oauth-google-text: #1f1f1f;
+  --card-shadow:       none;
+
+  /* Amber text-safe variant */
+  --amt:          #FFAB3C;     /* dark mode: same as --am */
+
+  /* Logo treatment (inverts) */
+  --logo-bg:      #FEFEFE;
+  --logo-fg:      #000000;
+
+  /* Overlays + shadows */
+  --overlay:        rgba(0, 0, 0, 0.65);
+  --overlay-light:  rgba(0, 0, 0, 0.50);
+  --sc:             0 1px 3px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--b1);
+  --thumb-shadow:   0 8px 24px rgba(0, 0, 0, 0.4);
+  --screen-shadow:  0 50px 100px -20px rgba(0, 0, 0, 0.85), 0 20px 50px -10px rgba(0, 0, 0, 0.6);
+
+  /* Ambient brand gradient — extremely subtle, top-left tint */
+  --mg: radial-gradient(ellipse at 30% 0%, rgba(22, 211, 66, 0.06) 0%, transparent 50%);
+
+  /* ============================================================
+     SPACING — Tailwind-aligned
+     ============================================================ */
+  --space-0_5: 2px;
+  --space-1:   4px;
+  --space-1_5: 6px;
+  --space-2:   8px;
+  --space-2_5: 10px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+
+  /* ============================================================
+     RADII
+     ============================================================ */
+  --r-md:    4px;
+  --r-lg:    8px;
+  --r-xl:    12px;
+  --r-2xl:   16px;
+  --r-full:  9999px;
+
+  /* ============================================================
+     EASING
+     ============================================================ */
+  --ease-out-strong:    cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer:        cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* ============================================================
+     TYPOGRAPHY
+     Manrope for everything UI / body. JetBrains Mono for metadata + code.
+     Adamina is reserved for editorial pull-quotes on the marketing site only.
+     ============================================================ */
+  --font-sans:    "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-serif:   "Adamina", "Iowan Old Style", "Times New Roman", Georgia, serif;
+
+  /* Semantic type roles — sizes are SMALLER than they look on marketing.
+     Product UI is dense. */
+  --t-display:  600 32px/1.20 var(--font-sans);  /* landing / auth hero */
+  --t-h1:       600 20px/1.30 var(--font-sans);  /* marketing card heading */
+  --t-h2:       600 18px/1.50 var(--font-sans);  /* in-app page title */
+  --t-h3:       600 14px/1.50 var(--font-sans);  /* section header */
+  --t-body:     400 14px/1.60 var(--font-sans);  /* chat message body */
+  --t-ui:       500 13px/1.50 var(--font-sans);  /* button / list item / link */
+  --t-body-sm:  400 13px/1.50 var(--font-sans);  /* dense reading */
+  --t-meta:     400 12px/1.50 var(--font-sans);  /* caption / step description */
+  --t-label:    500 10px/1.50 var(--font-sans);  /* tracked uppercase label */
+  --t-mono:     500 11px/1.40 var(--font-mono);  /* metadata chip — UPPERCASE */
+
+  --track-tight:  -0.02em;
+  --track-label:  0.05em;
+  --track-mono:   0.04em;
+}
+
+/* ============================================================
+   LIGHT THEME — opt-in via .light on a parent element.
+   The marketing site is light-first; the Sai app is dark-first.
+   ============================================================ */
+.light, [data-theme="light"] {
+  --bg:           #f9faf5;
+  --bg2:          #f5f6f1;
+  --bg3:          #efefed;
+  --bg3h:         #e8e8e5;
+  --bgcard:       #ffffff;
+  --bgi:          #f7f7f5;
+
+  --b1:           #e2e2df;
+  --b2:           #d0d0cc;
+
+  --t1:           #1a1a1e;
+  --t2:           #3c3c44;
+  --t3:           #6b6b73;
+  --t4:           #94948f;
+
+  --ab:           #0c0c0c;
+  --abt:          #fafafa;
+  --abh:          #3c3c44;
+
+  --as2:          #0FA635;     /* slightly darker on light */
+  --gg:           rgba(22, 211, 66, 0.20);
+  --gt:           #0B8226;     /* WCAG-AA on white */
+
+  --amt:          #B8860B;     /* warning text-safe on light */
+
+  --ccs:          rgba(212, 99, 75, 0.10);
+  --ccg:          rgba(212, 99, 75, 0.22);
+  --cct:          #B14B36;
+
+  --teach:        #7c3aed;
+  --teach-text:   #6d28d9;
+  --teach-bg:     rgba(124, 58, 237, 0.15);
+  --teach-subtle: rgba(124, 58, 237, 0.08);
+
+  --r:            #dc2626;
+
+  --logo-bg:      #000000;
+  --logo-fg:      #FEFEFE;
+
+  --overlay:        rgba(0, 0, 0, 0.35);
+  --overlay-light:  rgba(0, 0, 0, 0.25);
+  --sc:             0 2px 8px rgba(0, 0, 0, 0.08), 0 0 0 0.5px rgba(0, 0, 0, 0.06);
+  --thumb-shadow:   0 8px 24px rgba(0, 0, 0, 0.12);
+  --screen-shadow:  0 24px 60px -16px rgba(0, 0, 0, 0.22), 0 8px 24px -8px rgba(0, 0, 0, 0.12);
+  --card-shadow:    none;
+
+  /* OAuth surfaces (theme-aware) */
+  --oauth-apple-bg:    #1a1a1e;
+  --oauth-apple-text:  #ffffff;
+  --oauth-google-bg:   #ffffff;
+  --oauth-google-text: #1f1f1f;
+}
+
+/* ============================================================
+   BRAND COLORS — third-party logos / integrations
+   (Only used inside Brand chips and login cards.)
+   ============================================================ */
+:root {
+  --brand-linkedin:        #0A66C2;
+  --brand-gmail:           #EA4335;
+  --brand-salesforce:      #00A1E0;
+  --brand-crunchbase:      #0288D1;
+  --brand-google-blue:     #4285F4;
+  --brand-google-green:    #34A853;
+  --brand-google-yellow:   #FBBC05;
+  --brand-google-red:      #EA4335;
+  --brand-google-cal:      #4285F4;
+  --brand-apple:           #000000;
+  --brand-microsoft-red:   #F25022;
+  --brand-microsoft-green: #7FBA00;
+  --brand-microsoft-blue:  #00A4EF;
+  --brand-microsoft-yellow:#FFB900;
+  --brand-facebook:        #1877F2;
+  --brand-github:          #24292F;
+  --brand-slack:           #4A154B;
+  --brand-notion:          #000000;
+  --brand-hubspot:         #FF7A59;
+  --brand-jira:            #0052CC;
+  --brand-x:               #000000;
+  --brand-granola:         #6B4F3F;
+  --brand-pitchbook:       #004B87;
+}
+
+/* ============================================================
+   Base helpers
+   ============================================================ */
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+.font-sans  { font-family: var(--font-sans); }
+.font-mono  { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: var(--track-mono); }
+.font-serif { font-family: var(--font-serif); }
+
+.t-display  { font: var(--t-display);  letter-spacing: var(--track-tight); color: var(--t1); }
+.t-h1       { font: var(--t-h1);       color: var(--t1); }
+.t-h2       { font: var(--t-h2);       color: var(--t1); }
+.t-h3       { font: var(--t-h3);       color: var(--t1); }
+.t-body     { font: var(--t-body);     color: var(--t1); }
+.t-ui       { font: var(--t-ui);       color: var(--t1); }
+.t-body-sm  { font: var(--t-body-sm);  color: var(--t2); }
+.t-meta     { font: var(--t-meta);     color: var(--t3); }
+.t-label    { font: var(--t-label);    color: var(--t3); letter-spacing: var(--track-label); text-transform: uppercase; }
+.t-mono     { font: var(--t-mono);     color: var(--t3); text-transform: uppercase; letter-spacing: var(--track-mono); }
+
+/* ============================================================
+   Legacy aliases — keep the UI kits + early preview cards
+   building cleanly while we migrate to canonical token names.
+   Prefer the canonical tokens (--as, --bg, --t1, etc.) for new work.
+   ============================================================ */
+:root {
+  --simular-green:      var(--as);
+  --simular-green-deep: var(--as2);
+  --simular-green-soft: var(--gs);
+  --simular-green-glow: var(--gg);
+  --simular-cream:        #F4ECD8;
+  --simular-cream-soft:   #FAF5E6;
+  --simular-cream-deep:   #E8DDB8;
+
+  --ink:        #0c0c0c;
+  --fg-1:       var(--t1);
+  --fg-2:       var(--t2);
+  --fg-3:       var(--t3);
+  --fg-4:       var(--t4);
+
+  --bg-elev:    var(--bg2);
+  --bg-tint:    var(--bg3);
+  --bg-sunken:  var(--bg3h);
+  --bg-ink:     #0c0c0c;
+  --bg-ink-elev:#1a1a1a;
+
+  --line-1:       var(--b1);
+  --line-2:       var(--b2);
+  --line-strong:  var(--b2);
+  --line-on-dark: rgba(255,255,255,0.10);
+
+  --success: var(--as);
+  --warning: var(--am);
+  --danger:  var(--r);
+  --info:    var(--bl);
+
+  --status-running: var(--bl);
+  --status-waiting: var(--am);
+  --status-done:    var(--as);
+  --status-error:   var(--r);
+  --status-idle:    var(--t3);
+
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-2xl:  32px;
+  --radius-pill: 9999px;
+
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm: var(--sc);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: var(--thumb-shadow);
+  --shadow-xl: var(--screen-shadow);
+  --ring-focus:        0 0 0 3px var(--gs);
+  --ring-focus-strong: 0 0 0 3px var(--gg);
+
+  --display-1: 700 88px/0.95 var(--font-sans);
+  --display-2: 700 64px/1.00 var(--font-sans);
+  --h1:        var(--t-h1);
+  --h2:        var(--t-h2);
+  --h3:        var(--t-h3);
+  --h4:        600 22px/1.30 var(--font-sans);
+  --eyebrow:   var(--t-label);
+  --body-lg:   400 18px/1.55 var(--font-sans);
+  --body:      var(--t-body);
+  --body-sm:   var(--t-body-sm);
+  --caption:   var(--t-meta);
+  --mono:      var(--t-mono);
+  --quote:     28px/1.30 var(--font-serif);
+
+  --tracking-tight:   var(--track-tight);
+  --tracking-eyebrow: var(--track-label);
+}

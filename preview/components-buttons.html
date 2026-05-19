@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Buttons</title>
+<link rel="stylesheet" href="_card.css">
+</head>
+<body><div class="card-root">
+<style>
+  .wrap { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+  .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .label { font: var(--t-mono); color: var(--t3); min-width: 70px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font: 500 13px/1 var(--font-sans);
+    border-radius: 9999px;
+    padding: 9px 18px; border: 1px solid transparent;
+    cursor: pointer; transition: all 200ms var(--ease-out-strong);
+  }
+  .btn-primary { background: var(--ab); color: var(--bg); }
+  .btn-primary:hover { background: var(--abh); }
+  .btn-accent  { background: var(--as); color: #0c0c0c; }
+  .btn-accent:hover  { background: var(--as2); }
+  .btn-secondary { background: var(--bg3); color: var(--t1); border-color: var(--b1); }
+  .btn-secondary:hover { background: var(--bg3h); }
+  .btn-ghost  { background: transparent; color: var(--t1); }
+  .btn-ghost:hover { background: var(--bg3); }
+  .btn-sm { font-size: 12px; padding: 6px 12px; }
+  .btn-lg { font-size: 14px; padding: 12px 22px; }
+</style>
+<div class="wrap">
+  <div class="row"><div class="label">VARIANT</div>
+    <button class="btn btn-primary">Try Sai</button>
+    <button class="btn btn-accent">Delegate to Sai</button>
+    <button class="btn btn-secondary">Cancel</button>
+    <button class="btn btn-ghost">Sign in</button>
+  </div>
+  <div class="row"><div class="label">SIZE</div>
+    <button class="btn btn-primary btn-sm">Run</button>
+    <button class="btn btn-primary">Run task</button>
+    <button class="btn btn-primary btn-lg">Get started free</button>
+  </div>
+</div>
+</div></body></html>

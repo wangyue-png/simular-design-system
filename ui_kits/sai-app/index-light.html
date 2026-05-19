@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Sai · Simular (light theme)</title>
+<link rel="icon" href="../../assets/simular-mark-green.svg">
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  /* ============================================================
+     Sai app — chrome & layout
+     ============================================================ */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg-1); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+  body { font: var(--body); }
+  button { font-family: inherit; }
+
+  .sai-app {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    grid-template-rows: 100vh;
+    background: var(--bg-elev);
+  }
+
+  /* ---------- Sidebar ---------- */
+  .sai-sidebar {
+    display: flex; flex-direction: column;
+    padding: 14px 12px;
+    background: var(--bg);
+    border-right: 1px solid var(--line-1);
+    gap: 12px;
+    overflow: hidden;
+  }
+  .sai-brand { display: flex; align-items: center; gap: 10px; padding: 6px 8px 2px; }
+  .sai-brand-name { font: 700 17px/1 var(--font-sans); letter-spacing: -0.01em; }
+  .sai-brand-sub  { font: 500 11px/1 var(--font-sans); color: var(--fg-3); margin-top: 4px; }
+
+  .sai-workspace {
+    display: flex; align-items: center; gap: 10px; width: 100%;
+    padding: 10px; border-radius: 12px; border: 1px solid var(--line-1);
+    background: var(--bg-elev); cursor: pointer; text-align: left;
+    transition: all 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .sai-workspace:hover { border-color: var(--line-2); background: var(--bg-tint); }
+  .sai-ws-avatar {
+    width: 28px; height: 28px; border-radius: 8px; flex: none;
+    background: linear-gradient(135deg, var(--ink) 0%, #2a302b 100%);
+    color: white; font: 700 11px/1 var(--font-sans);
+    display: grid; place-items: center;
+  }
+  .sai-ws-meta { flex: 1; min-width: 0; }
+  .sai-ws-name { font: 600 13px/1.2 var(--font-sans); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sai-ws-plan { font: 500 11px/1 var(--font-sans); color: var(--fg-3); margin-top: 3px; }
+
+  .sai-nav { display: flex; flex-direction: column; gap: 2px; margin-top: 4px; }
+  .sai-nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px; border-radius: 8px;
+    font: 500 13px/1 var(--font-sans); color: var(--fg-2);
+    text-decoration: none; transition: all 140ms;
+  }
+  .sai-nav-item:hover { background: var(--bg-tint); color: var(--fg-1); }
+  .sai-nav-item.active { background: var(--bg-tint); color: var(--fg-1); font-weight: 600; }
+  .sai-nav-count { margin-left: auto; font: 500 11px/1 var(--font-sans); color: var(--fg-3); }
+
+  .sai-section-title {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 10px 6px;
+    font: 600 10px/1 var(--font-sans); letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--fg-3);
+  }
+  .sai-section-add {
+    width: 20px; height: 20px; border-radius: 6px; border: none; background: transparent;
+    color: var(--fg-3); cursor: pointer; display: grid; place-items: center;
+  }
+  .sai-section-add:hover { background: var(--bg-tint); color: var(--fg-1); }
+
+  .sai-runs { display: flex; flex-direction: column; gap: 4px; overflow-y: auto; }
+  .sai-run {
+    text-align: left; padding: 9px 10px; border-radius: 8px;
+    background: transparent; border: 1px solid transparent;
+    cursor: pointer; transition: all 140ms;
+    display: flex; flex-direction: column; gap: 5px;
+  }
+  .sai-run:hover { background: var(--bg-tint); }
+  .sai-run.active { background: var(--bg-tint); border-color: var(--line-1); }
+  .sai-run-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .sai-run-time { font: 500 11px/1 var(--font-sans); color: var(--fg-3); }
+  .sai-run-title { font: 500 12.5px/1.4 var(--font-sans); color: var(--fg-1); overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+
+  .sai-sidebar-spacer { flex: 1; }
+  .sai-user {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px; border-radius: 12px; border: 1px solid var(--line-1);
+  }
+  .sai-user-avatar {
+    width: 30px; height: 30px; border-radius: 999px; flex: none;
+    background: var(--simular-green); color: var(--ink);
+    font: 700 11px/1 var(--font-sans); display: grid; place-items: center;
+  }
+  .sai-user-meta { min-width: 0; }
+  .sai-user-name { font: 600 12.5px/1 var(--font-sans); }
+  .sai-user-email { font: 500 11px/1 var(--font-sans); color: var(--fg-3); margin-top: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ---------- Main column ---------- */
+  .sai-main {
+    display: grid;
+    grid-template-rows: 56px 1fr;
+    overflow: hidden;
+  }
+
+  /* TopBar */
+  .sai-topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 20px;
+    background: var(--bg); border-bottom: 1px solid var(--line-1);
+  }
+  .sai-topbar-left, .sai-topbar-right { display: flex; align-items: center; gap: 10px; }
+  .sai-breadcrumb { display: flex; align-items: center; gap: 8px; font: 500 13px/1 var(--font-sans); }
+  .sai-crumb-muted { color: var(--fg-3); }
+  .sai-crumb { color: var(--fg-1); font-weight: 600; }
+
+  .sai-icon-btn {
+    width: 32px; height: 32px; border-radius: 8px; border: none;
+    background: transparent; color: var(--fg-2); cursor: pointer;
+    display: grid; place-items: center; transition: all 140ms;
+  }
+  .sai-icon-btn:hover { background: var(--bg-tint); color: var(--fg-1); }
+  .sai-icon-btn.danger:hover { background: rgba(229,72,77,0.10); color: var(--danger); }
+  .sai-control-group { display: flex; align-items: center; gap: 2px; padding: 2px; border-radius: 10px; background: var(--bg-elev); border: 1px solid var(--line-1); }
+  .sai-divider { width: 1px; height: 22px; background: var(--line-2); margin: 0 4px; }
+
+  /* Buttons */
+  .sai-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px; border-radius: 999px;
+    font: 600 13px/1 var(--font-sans);
+    border: 1px solid transparent; cursor: pointer;
+    white-space: nowrap;
+    transition: all 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .sai-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .sai-btn-ghost { background: transparent; color: var(--fg-1); }
+  .sai-btn-ghost:hover { background: var(--bg-tint); }
+  .sai-btn-secondary { background: white; color: var(--fg-1); border-color: var(--line-2); }
+  .sai-btn-secondary:hover:not(:disabled) { background: var(--bg-tint); }
+  .sai-btn-accent { background: var(--simular-green); color: var(--ink); }
+  .sai-btn-accent:hover:not(:disabled) { background: var(--simular-green-deep); color: white; }
+  .sai-btn-primary { background: var(--ink); color: white; }
+  .sai-btn-primary:hover:not(:disabled) { background: #000; }
+
+  /* ---------- Workbench ---------- */
+  .sai-workbench {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+    gap: 14px;
+    padding: 14px;
+    overflow: hidden;
+  }
+
+  /* Desktop preview */
+  .sai-desktop-shell {
+    display: grid; grid-template-rows: 40px 1fr 36px;
+    background: var(--bg-ink); border-radius: 14px;
+    overflow: hidden; box-shadow: var(--shadow-md);
+  }
+  /* Faux macOS chrome stays dark even in light theme — matches real macOS
+     Pro / Sai which keeps its dark window even in macOS light mode. */
+  .sai-mac-chrome {
+    display: flex; align-items: center; gap: 12px;
+    padding: 0 12px;
+    background: linear-gradient(to bottom, #2b2f2c, #232624);
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+  }
+  .sai-traffic { display: flex; gap: 6px; }
+  .sai-traffic span { width: 12px; height: 12px; border-radius: 999px; display: block; }
+  .sai-mac-url {
+    flex: 1; display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.7);
+    padding: 5px 12px; border-radius: 7px;
+    font: 500 12px/1 var(--font-sans);
+    max-width: 360px; margin: 0 auto;
+  }
+  .sai-globe { color: rgba(255,255,255,0.6); display: grid; place-items: center; }
+
+  .sai-desktop-canvas {
+    background: linear-gradient(135deg, #d9e0d5 0%, #c1c9c0 100%);
+    padding: 16px; overflow: hidden;
+  }
+
+  .sai-gmail {
+    background: white; height: 100%; border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1), 0 12px 32px rgba(0,0,0,0.15);
+    display: grid; grid-template-columns: 180px 1fr;
+    overflow: hidden;
+    position: relative;
+  }
+  .sai-gmail-side { padding: 14px 10px; background: #FAFAF8; border-right: 1px solid var(--line-1); display: flex; flex-direction: column; gap: 4px; }
+  .sai-gmail-compose { background: var(--ink); color: white; padding: 8px 14px; border-radius: 999px; font: 600 12px/1 var(--font-sans); text-align: center; margin-bottom: 8px; }
+  .sai-gmail-item { display: flex; justify-content: space-between; padding: 6px 12px; border-radius: 6px; font: 500 12px/1.4 var(--font-sans); color: var(--fg-2); }
+  .sai-gmail-item span { color: var(--fg-3); font-size: 11px; }
+  .sai-gmail-item.active { background: var(--simular-green-soft); color: var(--simular-green-deep); font-weight: 700; }
+  .sai-gmail-item.active span { color: var(--simular-green-deep); }
+
+  .sai-gmail-main { padding: 8px 0; overflow: hidden; position: relative; }
+  .sai-gmail-row {
+    display: grid; grid-template-columns: 110px 1fr 70px;
+    align-items: center; gap: 12px;
+    padding: 9px 16px; border-bottom: 1px solid var(--line-1);
+    font: 400 12.5px/1.3 var(--font-sans); color: var(--fg-2);
+  }
+  .sai-gmail-row.unread { color: var(--fg-1); }
+  .sai-gmail-row.unread .sai-gmail-sender, .sai-gmail-row.unread .sai-gmail-subject { font-weight: 600; }
+  .sai-gmail-row.highlighted { outline: 2px solid var(--simular-green); outline-offset: -2px; background: rgba(22,211,66,0.04); }
+  .sai-gmail-sender { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sai-gmail-subject { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sai-gmail-time { font-size: 11px; color: var(--fg-3); text-align: right; }
+
+  /* Agent cursor */
+  .sai-cursor { position: absolute; top: 60px; left: 380px; pointer-events: none; }
+  .sai-cursor-ring {
+    width: 30px; height: 30px; border-radius: 999px;
+    border: 2px solid var(--simular-green);
+    box-shadow: 0 0 0 4px rgba(22,211,66,0.18);
+    animation: cursorPulse 1.4s ease-in-out infinite;
+  }
+  .sai-cursor-dot { position: absolute; top: 12px; left: 12px; width: 6px; height: 6px; border-radius: 999px; background: var(--simular-green); box-shadow: 0 0 0 2px white; }
+  .sai-cursor-tip {
+    position: absolute; top: 36px; left: 36px;
+    background: var(--ink); color: white;
+    padding: 5px 10px; border-radius: 6px;
+    font: 600 11px/1 var(--font-sans);
+    white-space: nowrap;
+    box-shadow: var(--shadow-md);
+  }
+  .sai-cursor-tip::before {
+    content: ""; position: absolute; top: -4px; left: 10px;
+    width: 8px; height: 8px; background: var(--ink); transform: rotate(45deg);
+  }
+  @keyframes cursorPulse { 0%,100% { transform: scale(1); opacity: 1 } 50% { transform: scale(1.08); opacity: 0.7 } }
+
+  .sai-desktop-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px;
+    background: var(--bg-ink-elev); color: rgba(255,255,255,0.7);
+    font: 500 11px/1 var(--font-sans);
+    border-top: 1px solid rgba(0,0,0,0.4);
+  }
+  .sai-driver { display: flex; align-items: center; gap: 8px; }
+  .sai-pulse-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--simular-green); animation: pulse 1.4s ease-in-out infinite; }
+  .sai-driver-meta { font-variant-numeric: tabular-nums; opacity: 0.6; }
+
+  @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: 0.35 } }
+  .sai-pulse { animation: pulse 1.4s ease-in-out infinite; }
+
+  /* ---------- Right pane: activity + composer ---------- */
+  .sai-right {
+    display: grid; grid-template-rows: 1fr auto;
+    gap: 14px;
+    background: var(--bg); border: 1px solid var(--line-1);
+    border-radius: 14px;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  /* Activity stream */
+  .sai-activity { display: flex; flex-direction: column; overflow: hidden; min-width: 0; min-height: 0; }
+
+  .sai-plan { padding: 14px 16px 10px; border-bottom: 1px solid var(--line-1); background: var(--bg-elev); }
+  .sai-plan-head { display: flex; align-items: center; gap: 8px; font: 700 12px/1 var(--font-sans); color: var(--fg-1); margin-bottom: 10px; }
+  .sai-plan-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .sai-plan-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font: 500 12.5px/1.4 var(--font-sans); color: var(--fg-2);
+  }
+  .sai-plan-list li.done { color: var(--fg-3); text-decoration: line-through; text-decoration-color: var(--fg-4); }
+  .sai-plan-list li.current { color: var(--fg-1); font-weight: 600; }
+  .sai-plan-marker {
+    width: 18px; height: 18px; border-radius: 999px; flex: none;
+    display: grid; place-items: center;
+    background: var(--bg-tint); color: var(--fg-3);
+    font: 700 10px/1 var(--font-sans);
+  }
+  .sai-plan-list li.done .sai-plan-marker { background: var(--simular-green); color: white; }
+  .sai-plan-list li.current .sai-plan-marker { background: var(--ink); color: white; }
+
+  .sai-steps { padding: 14px 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 0; flex: 1; }
+  .sai-step { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 10px; }
+  .sai-step-rail { display: flex; flex-direction: column; align-items: center; }
+  .sai-step-marker { width: 10px; height: 10px; border-radius: 999px; background: var(--simular-green); margin-top: 6px; }
+  .sai-step-marker.done { background: var(--simular-green); }
+  .sai-step-marker.error { background: var(--danger); }
+  .sai-step-marker.running { background: var(--info); box-shadow: 0 0 0 4px rgba(44,124,255,0.18); animation: pulse 1.4s ease-in-out infinite; }
+  .sai-step-rail::after {
+    content: ""; flex: 1; width: 2px; background: var(--bg-sunken); margin-top: 4px;
+  }
+  .sai-step:last-child .sai-step-rail::after { display: none; }
+  .sai-step-body { padding-bottom: 16px; min-width: 0; }
+  .sai-step-head { display: flex; align-items: center; gap: 8px; }
+  .sai-step-icon { color: var(--fg-3); display: grid; place-items: center; }
+  .sai-step-label { font: 600 13px/1.3 var(--font-sans); color: var(--fg-1); }
+  .sai-step-time { margin-left: auto; font: 500 11px/1 var(--font-mono); color: var(--fg-3); }
+  .sai-step-detail { font: 400 12.5px/1.5 var(--font-sans); color: var(--fg-2); margin-top: 4px; }
+  .sai-step-code {
+    margin: 8px 0 0; padding: 8px 12px;
+    background: var(--bg-ink); color: #E6E8E5;
+    border-radius: 8px; font: 400 11.5px/1.55 var(--font-mono);
+    overflow-x: auto;
+  }
+  .sai-step.current .sai-step-label { color: var(--info); }
+
+  /* Approval banner */
+  .sai-approval {
+    margin: 0 16px 14px;
+    padding: 14px;
+    background: rgba(232,155,34,0.06);
+    border: 1px solid rgba(232,155,34,0.3);
+    border-radius: 12px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .sai-approval-head { display: flex; gap: 12px; align-items: flex-start; }
+  .sai-approval-icon {
+    width: 30px; height: 30px; flex: none;
+    border-radius: 8px; background: rgba(232,155,34,0.18);
+    color: var(--warning);
+    display: grid; place-items: center;
+  }
+  .sai-approval-title { font: 700 14px/1.2 var(--font-sans); color: var(--fg-1); }
+  .sai-approval-sub   { font: 500 12px/1.4 var(--font-sans); color: var(--fg-2); margin-top: 2px; }
+  .sai-approval-action {
+    background: white; border: 1px solid var(--line-1); border-radius: 8px;
+    padding: 10px 12px;
+    display: flex; flex-direction: column; gap: 6px;
+    font: 500 12.5px/1.4 var(--font-sans);
+  }
+  .sai-approval-row { display: grid; grid-template-columns: 60px 1fr; gap: 12px; }
+  .sai-approval-key { color: var(--fg-3); font-weight: 600; text-transform: uppercase; font-size: 10px; letter-spacing: 0.06em; padding-top: 2px; }
+  .sai-approval-buttons { display: flex; justify-content: flex-end; gap: 8px; }
+
+  /* Composer */
+  .sai-composer {
+    padding: 14px 16px 16px;
+    border-top: 1px solid var(--line-1);
+    background: var(--bg-elev);
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .sai-composer-head { display: flex; align-items: baseline; gap: 8px; }
+  .sai-composer-eyebrow { font: 700 11px/1 var(--font-sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--simular-green-deep); }
+  .sai-composer-hint { font: 500 11.5px/1 var(--font-sans); color: var(--fg-3); }
+  .sai-composer-field {
+    background: white; border: 1px solid var(--line-2); border-radius: 12px;
+    padding: 8px 8px 8px 12px; transition: all 160ms;
+  }
+  .sai-composer-field:focus-within { border-color: var(--simular-green); box-shadow: var(--ring-focus); }
+  .sai-composer-field textarea {
+    width: 100%; border: none; outline: none; resize: none;
+    background: transparent;
+    font: 400 14px/1.5 var(--font-sans);
+    padding: 6px 4px;
+  }
+  .sai-composer-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 6px; border-top: 1px solid var(--line-1); flex-wrap: wrap; min-width: 0; }
+  .sai-composer-row .sai-btn { white-space: nowrap; flex: none; }
+  .sai-composer-pills { display: flex; gap: 6px; flex-wrap: wrap; min-width: 0; }
+  .sai-mini-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 9px; border-radius: 999px;
+    background: var(--bg-tint); color: var(--fg-2);
+    font: 600 11px/1 var(--font-sans);
+  }
+  .sai-mini-pill svg { width: 12px; height: 12px; }
+  .sai-skills-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .sai-skill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 7px 12px; border-radius: 999px;
+    background: white; border: 1px solid var(--line-1);
+    font: 500 12px/1 var(--font-sans); color: var(--fg-1);
+    cursor: pointer; transition: all 140ms;
+  }
+  .sai-skill:hover { border-color: var(--line-strong); background: var(--bg-tint); }
+  .sai-skill-icon { color: var(--simular-green-deep); display: grid; place-items: center; }
+  .sai-skill-hot { font: 700 9px/1 var(--font-sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--simular-green-deep); background: var(--simular-green-soft); padding: 2px 6px; border-radius: 999px; }
+</style>
+</head>
+<body data-screen-label="Sai · light theme">
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="Pill.jsx"></script>
+<script type="text/babel" src="Sidebar.jsx"></script>
+<script type="text/babel" src="TopBar.jsx"></script>
+<script type="text/babel" src="DesktopPreview.jsx"></script>
+<script type="text/babel" src="ActivityStream.jsx"></script>
+<script type="text/babel" src="ApprovalBanner.jsx"></script>
+<script type="text/babel" src="Composer.jsx"></script>
+
+<script type="text/babel">
+const { useState } = React;
+
+const RUNS = [
+  { id: "r1", title: "Tailor resume to Stripe staff PM posting", status: "running", statusLabel: "Running", time: "now" },
+  { id: "r2", title: "Find 5 fintech newsletter writers, pull stats to Sheet",  status: "waiting", statusLabel: "Approve", time: "2m" },
+  { id: "r3", title: "Draft Q4 board update from this week's notes", status: "done", statusLabel: "Done", time: "1h" },
+  { id: "r4", title: "Reformat investor doc per their template", status: "done", statusLabel: "Done", time: "4h" },
+  { id: "r5", title: "LinkedIn engagement queue · weekly", status: "error", statusLabel: "Error", time: "Yest" },
+];
+
+const PLAN = [
+  { text: "Open Gmail and load inbox", done: true },
+  { text: "Identify the 5 highest-priority unread threads", done: true },
+  { text: "Draft a personalized reply for each", current: true },
+  { text: "Pause for your approval before sending" },
+  { text: "Send approved drafts; log skipped" },
+];
+
+const STEPS = [
+  { kind: "plan",     status: "done", label: "Planned 5 steps", time: "0:00", detail: "Reviewed the request and broke it into 5 steps. Will check in for approval before sending anything." },
+  { kind: "browse",   status: "done", label: "Opened mail.google.com", time: "0:08" },
+  { kind: "click",    status: "done", label: "Filtered to unread, last 24h", time: "0:14", detail: "5 unread threads found — Priya R., Marcus L., Helena B., Jordan A., Northwind Ops digest." },
+  { kind: "type",     status: "done", label: "Drafted reply to Priya R.", time: "0:38", detail: "Re: Q4 partnership ping — proposed Wed 2pm and attached the one-pager." },
+  { kind: "click",    status: "running", current: true, label: "Drafting reply to Marcus L.", time: "1:02", detail: "Tone: warm but professional. Referencing the pilot scope we discussed last week." },
+];
+
+function App() {
+  const [activeRunId, setActiveRunId] = useState("r1");
+  const [draft, setDraft] = useState("");
+  const [showApproval, setShowApproval] = useState(true);
+
+  return (
+    <div className="sai-app">
+      <Sidebar activeRunId={activeRunId} setActiveRunId={setActiveRunId} runs={RUNS} />
+
+      <div className="sai-main">
+        <TopBar
+          runStatus="running"
+          runTitle="Tailor resume to Stripe staff PM posting"
+        />
+
+        <div className="sai-workbench">
+          <DesktopPreview stepLabel="Click reply on Marcus L." />
+
+          <div className="sai-right">
+            <ActivityStream steps={STEPS} plan={PLAN} />
+
+            {showApproval && (
+              <ApprovalBanner
+                action="Send drafted email"
+                target="marcus.l@apricot.fi · Re: Following up"
+                onApprove={() => setShowApproval(false)}
+                onDeny={() => setShowApproval(false)}
+              />
+            )}
+
+            <Composer
+              value={draft}
+              setValue={setDraft}
+              onSubmit={() => setDraft("")}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

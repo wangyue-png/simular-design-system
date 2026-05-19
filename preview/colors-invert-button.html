@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Inverting button</title>
+<link rel="stylesheet" href="_card.css">
+</head>
+<body><div class="card-root">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+  .panel { padding: 20px; border-radius: 14px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+  .panel.dark { background: var(--bg); border: 1px solid var(--b1); }
+  .panel.light { background: #f9faf5; border: 1px solid #e2e2df; }
+  .btn { padding: 9px 18px; border-radius: 999px; font: 500 13px/1 var(--font-sans); border: none; cursor: pointer; }
+  .btn.dark-mode { background: #f9faf5; color: #0c0c0c; }
+  .btn.light-mode { background: #0c0c0c; color: #fafafa; }
+  .name { font: 600 12px/1.2 var(--font-sans); }
+  .name.on-light { color: #1a1a1e; }
+  .hex { font: 400 10.5px/1.4 var(--font-mono); color: var(--t3); }
+  .hex.on-light { color: #6b6b73; }
+</style>
+<div class="grid">
+  <div class="panel dark">
+    <div class="hex">DARK MODE · default</div>
+    <button class="btn dark-mode">Delegate to Sai</button>
+    <div class="name">--ab fills with light</div>
+    <div class="hex">#f9faf5 fill · #0c0c0c text</div>
+  </div>
+  <div class="panel light">
+    <div class="hex on-light">LIGHT MODE · alt</div>
+    <button class="btn light-mode">Delegate to Sai</button>
+    <div class="name on-light">--ab fills with dark</div>
+    <div class="hex on-light">#0c0c0c fill · #fafafa text</div>
+  </div>
+</div>
+</div></body></html>

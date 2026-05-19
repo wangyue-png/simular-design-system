@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Body & UI</title>
+<link rel="stylesheet" href="_card.css">
+</head>
+<body><div class="card-root">
+<style>
+  .row { display: grid; grid-template-columns: 110px 1fr; gap: 18px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--b1); }
+  .row:last-child { border-bottom: none; }
+  .meta { font: var(--t-mono); color: var(--t3); }
+</style>
+<div>
+  <div class="row"><div class="meta">BODY · 14/1.6</div><div style="font: var(--t-body); color: var(--t1)">The quick brown fox jumps over the lazy dog.</div></div>
+  <div class="row"><div class="meta">UI · 13/1.5 · 500</div><div style="font: var(--t-ui); color: var(--t1)">Button text · list item title · sidebar link</div></div>
+  <div class="row"><div class="meta">BODY-SM · 13/1.5</div><div style="font: var(--t-body-sm); color: var(--t2)">Dense reading text or inline legal copy.</div></div>
+  <div class="row"><div class="meta">META · 12/1.5</div><div style="font: var(--t-meta); color: var(--t3)">Caption, step description, secondary metadata.</div></div>
+</div>
+</div></body></html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Toggles</title>
+<link rel="stylesheet" href="_card.css">
+</head>
+<body><div class="card-root">
+<style>
+  .wrap { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+  .item { display: flex; align-items: center; gap: 10px; font: var(--t-ui); color: var(--t1); }
+  .switch { width: 36px; height: 20px; border-radius: 999px; background: var(--bg3h); position: relative; transition: background 200ms var(--ease-out-strong); cursor: pointer; flex: none; }
+  .switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 999px; background: var(--t1); transition: transform 200ms var(--ease-out-strong); }
+  .switch.on { background: var(--as); }
+  .switch.on::after { transform: translateX(16px); background: #0c0c0c; }
+  .check { width: 18px; height: 18px; border-radius: 5px; border: 1.5px solid var(--b2); background: var(--bgi); flex: none; display: grid; place-items: center; }
+  .check.on { background: var(--as); border-color: var(--as); }
+  .check.on::after { content: ""; width: 9px; height: 5px; border-left: 2px solid #0c0c0c; border-bottom: 2px solid #0c0c0c; transform: rotate(-45deg) translate(1px, -1px); }
+</style>
+<div class="wrap">
+  <div class="item"><div class="switch on"></div>Approval required</div>
+  <div class="item"><div class="switch"></div>Run in background</div>
+  <div class="item"><div class="check on"></div>Save as skill</div>
+  <div class="item"><div class="check"></div>Notify on done</div>
+</div>
+</div></body></html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Radii</title>
+<link rel="stylesheet" href="_card.css">
+</head>
+<body><div class="card-root">
+<style>
+  .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 28px; align-items: center; }
+  .scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .item { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+  .sw { width: 56px; height: 56px; background: var(--gs); border: 1.5px solid var(--as); }
+  .name { font: 500 10.5px/1.1 var(--font-mono); color: var(--t1); }
+  .val { font: 500 10px/1 var(--font-mono); color: var(--t3); }
+  .group-name { font: 500 10px/1.2 var(--font-mono); color: var(--t3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; grid-column: 1 / -1; }
+  .pattern { display: grid; grid-template-columns: 130px 1fr; gap: 10px; padding: 2px 0; font: 400 11.5px/1.4 var(--font-sans); color: var(--t2); }
+  .pattern code { font: 500 10.5px/1.4 var(--font-mono); color: var(--t3); }
+</style>
+<div class="wrap">
+  <div>
+    <div class="group-name">SCALE</div>
+    <div class="scale">
+      <div class="item"><div class="sw" style="border-radius:4px"></div><div class="name">md</div><div class="val">4px</div></div>
+      <div class="item"><div class="sw" style="border-radius:8px"></div><div class="name">lg</div><div class="val">8px</div></div>
+      <div class="item"><div class="sw" style="border-radius:12px"></div><div class="name">xl</div><div class="val">12px</div></div>
+      <div class="item"><div class="sw" style="border-radius:16px"></div><div class="name">2xl</div><div class="val">16px</div></div>
+      <div class="item"><div class="sw" style="border-radius:9999px"></div><div class="name">full</div><div class="val">∞</div></div>
+    </div>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 4px;">
+    <div class="group-name">USAGE</div>
+    <div class="pattern"><code>Buttons, inputs</code><div>rounded-md · 4px</div></div>
+    <div class="pattern"><code>Cards</code><div>rounded-lg · 8px</div></div>
+    <div class="pattern"><code>Modals</code><div>rounded-xl → 2xl · 12–16px</div></div>
+    <div class="pattern"><code>Badges, pills</code><div>rounded-full · 9999px</div></div>
+  </div>
+</div>
+</div></body></html>

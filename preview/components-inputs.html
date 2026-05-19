@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Inputs</title>
+<link rel="stylesheet" href="_card.css">
+</head>
+<body><div class="card-root">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .lbl { font: var(--t-mono); color: var(--t3); }
+  .input {
+    font: 400 13px/1 var(--font-sans); color: var(--t1);
+    padding: 11px 14px; border-radius: 8px;
+    border: 1px solid var(--b1); background: var(--bgi);
+    outline: none; transition: all 160ms;
+  }
+  .input::placeholder { color: var(--t4); }
+  .input:hover { border-color: var(--b2); }
+  .input.focus { border-color: var(--as); box-shadow: 0 0 0 3px var(--gs); }
+  .help { font: var(--t-meta); color: var(--t3); }
+</style>
+<div class="grid">
+  <div class="field">
+    <div class="lbl">TASK</div>
+    <input class="input" placeholder="What should Sai do?" value="Draft three follow-up emails">
+    <div class="help">Describe the outcome you want, in plain English.</div>
+  </div>
+  <div class="field">
+    <div class="lbl">WORKSPACE NAME</div>
+    <input class="input focus" value="Sales ops">
+    <div class="help">Visible only to you.</div>
+  </div>
+</div>
+</div></body></html>

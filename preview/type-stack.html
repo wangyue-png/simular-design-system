@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Type families</title>
+<link rel="stylesheet" href="_card.css">
+</head>
+<body><div class="card-root">
+<style>
+  .wrap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .item { padding: 14px; background: var(--bgcard); border: 1px solid var(--b1); border-radius: 12px; }
+  .name { font: 700 22px/1 var(--font-sans); margin-bottom: 8px; color: var(--t1); }
+  .role { font: var(--t-mono); color: var(--as); text-transform: uppercase; letter-spacing: var(--track-mono); margin-bottom: 10px; }
+  .glyphs { font-size: 26px; line-height: 1; color: var(--t1); margin-bottom: 8px; }
+  .meta { font: 400 11px/1.4 var(--font-mono); color: var(--t3); }
+</style>
+<div class="wrap">
+  <div class="item">
+    <div class="role">UI · BODY</div>
+    <div class="name" style="font-family: var(--font-sans)">Manrope</div>
+    <div class="glyphs" style="font-family: var(--font-sans); font-weight: 600">Aa Bb 123 →</div>
+    <div class="meta">Variable · 200–800</div>
+  </div>
+  <div class="item">
+    <div class="role">CODE · META</div>
+    <div class="name" style="font-family: var(--font-mono)">JetBrains</div>
+    <div class="glyphs" style="font-family: var(--font-mono); font-weight: 500">Aa Bb 123 →</div>
+    <div class="meta">JetBrains Mono · 400/500</div>
+  </div>
+  <div class="item">
+    <div class="role">EDITORIAL ONLY</div>
+    <div class="name" style="font-family: var(--font-serif)">Adamina</div>
+    <div class="glyphs" style="font-family: var(--font-serif); font-style: italic">Aa Bb 123 →</div>
+    <div class="meta">Pull quotes only</div>
+  </div>
+</div>
+</div></body></html>

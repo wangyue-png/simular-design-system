@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Easing curves</title>
+<link rel="stylesheet" href="_card.css">
+</head>
+<body><div class="card-root">
+<style>
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .item { background: var(--bgcard); border: 1px solid var(--b1); border-radius: 12px; padding: 14px; }
+  .name { font: 600 12px/1 var(--font-sans); color: var(--t1); margin-bottom: 6px; }
+  .val  { font: 500 10px/1.4 var(--font-mono); color: var(--t3); margin-bottom: 10px; }
+  .track { height: 4px; background: var(--bg3); border-radius: 999px; position: relative; overflow: hidden; }
+  .ball  { position: absolute; top: -4px; width: 12px; height: 12px; border-radius: 999px; background: var(--as); left: 0; }
+  @keyframes e-os { 0% { left: 0 } 100% { left: calc(100% - 12px) } }
+  .b1 { animation: e-os 1.6s var(--ease-out-strong) infinite alternate; }
+  .b2 { animation: e-os 1.6s var(--ease-in-out-strong) infinite alternate; }
+  .b3 { animation: e-os 1.6s var(--ease-drawer) infinite alternate; }
+</style>
+<div class="grid">
+  <div class="item"><div class="name">--ease-out-strong</div><div class="val">cubic-bezier(0.23, 1, 0.32, 1)</div><div class="track"><div class="ball b1"></div></div></div>
+  <div class="item"><div class="name">--ease-in-out-strong</div><div class="val">cubic-bezier(0.77, 0, 0.175, 1)</div><div class="track"><div class="ball b2"></div></div></div>
+  <div class="item"><div class="name">--ease-drawer</div><div class="val">cubic-bezier(0.32, 0.72, 0, 1)</div><div class="track"><div class="ball b3"></div></div></div>
+</div>
+</div></body></html>

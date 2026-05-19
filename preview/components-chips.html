@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Chips & tags</title>
+<link rel="stylesheet" href="_card.css">
+</head>
+<body><div class="card-root">
+<style>
+  .wrap { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 12px; border-radius: 9999px;
+    font: 500 12px/1.2 var(--font-sans);
+    border: 1px solid var(--b1); background: var(--bg3); color: var(--t1);
+  }
+  .chip.green { background: var(--gs); border-color: transparent; color: var(--as); }
+  .chip.amber { background: var(--ams); border-color: transparent; color: #8a5b00; }
+  .chip.coral { background: var(--ccs); border-color: transparent; color: var(--cct); }
+  .chip.teach { background: var(--teach-bg); border-color: transparent; color: var(--teach-text); }
+  .chip.dot::before { content: ""; width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
+</style>
+<div class="wrap">
+  <div class="chip">Browser</div>
+  <div class="chip">Desktop</div>
+  <div class="chip">Terminal</div>
+  <div class="chip green dot">Running</div>
+  <div class="chip amber dot">Approve</div>
+  <div class="chip coral dot">Paused</div>
+  <div class="chip teach dot">Teach mode</div>
+</div>
+</div></body></html>

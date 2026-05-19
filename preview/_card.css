@@ -1,0 +1,35 @@
+/* shared styling for preview cards — dark-first, matching the Sai app */
+@import url("../colors_and_type.css");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--t1);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: var(--mg);
+}
+body {
+  padding: 20px 24px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.card-root { width: 100%; }
+.label-text {
+  font: var(--t-mono);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  color: var(--t3);
+}
+.token {
+  font: var(--t-mono);
+  color: var(--t3);
+}
+.row { display: flex; align-items: center; gap: 12px; }
+
+/* Light theme override for cards that demo light mode */
+.demo-light { background: var(--bg); color: var(--t1); }
