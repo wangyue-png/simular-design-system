@@ -1,17 +1,14 @@
-# Simular Design — a Sai skill
-
+# Simular Design
 [![Skill](https://img.shields.io/badge/Sai-skill-16D342)](https://simular.ai) [![License](https://img.shields.io/badge/license-MIT-blue)](#license)
 
-A [Sai](https://simular.ai) skill that teaches the agent to design well-branded interfaces and assets for **Simular** ("The Autonomous Computer Company") and its product **Sai** — production code or throwaway prototypes, mocks, decks, and slides.
-
-Includes light + dark design tokens, type scale, fonts (Manrope, Adamina), the real 29-icon set, brand logos, and reference UI kits for the Sai product and the Simular marketing site.
+Branding kit includes light + dark design tokens, type scale, fonts (Manrope, Adamina), the real 29-icon set, brand logos, and reference UI kits for the Sai product and the Simular marketing site.
 
 ## Install
 
-**Sai app (recommended):**
+**Recommended:**
 1. Download this repo: `Code → Download ZIP` (or clone and zip it)
 2. In Sai: **Settings → Skills → Import skill** → select the ZIP
-3. Invoke by asking Sai to "design", "mock up", or "build a Simular/Sai" UI
+3. Invoke by asking Sai/Claude to "design", "mock up", or "build a Simular/Sai" UI
 
 **Clone:**
 ```bash
