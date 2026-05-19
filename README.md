@@ -58,9 +58,9 @@ SKILL.md                       ← Claude AI skill manifest for automated design
 
 ---
 
-## Default mode: light
+## Default mode: Dark
 
-**Light mode is the default for all outputs** — slides, social posts, marketing, email, one-pagers. Use dark mode only when explicitly needed (e.g. announcement banners, dark-themed decks).
+**Dark mode is the default for all outputs** — slides, social posts, marketing, email, one-pagers. Use light mode only when explicitly needed (e.g. announcement banners, light-themed decks).
 
 ---
 
