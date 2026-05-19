@@ -1,12 +1,12 @@
 ---
 name: simular-design
-description: Use this skill to generate well-branded interfaces and assets for Simular ("The Autonomous Computer Company") and its product Sai — either for production code or throwaway prototypes / mocks / decks / slides. Contains essential design guidelines, dark+light tokens, type, fonts, real icon set, brand logos, and reference UI kit components.
+description: Use this skill to generate well-branded interfaces and assets for Simular (the company) and its product Sai — slides, decks, social posts, one-pagers, marketing materials, prototypes, or production code. Light mode is the default for all generated outputs. Contains essential design guidelines, dark+light tokens, type, fonts, real icon set, brand logos, and reference UI kit components.
 user-invocable: true
 ---
 
 # Simular design skill
 
-You are designing for **Simular Inc.** and its autonomous-AI-coworker product **Sai**. The brand is dark-first in product, light-first in marketing, with one chromatic accent (Simular Lime `#16D342`).
+You are designing for **Simular Inc.** (the company) and its autonomous-AI-coworker product **Sai**. They are separate brands with separate logos. The default mode for all generated outputs is **light**. One chromatic accent: Simular Lime `#16D342`.
 
 ## Files to read first
 
@@ -34,10 +34,15 @@ Ask the user what they want to build or design (deck, landing page, app screen, 
 
 ## Key constraints
 
-- **Theme.** Product surfaces are **dark by default** (`--bg: #0c0c0c`). Marketing surfaces are **light** (`--bg: #f9faf5`). Use the same tokens — flip with `data-theme="light"`.
+- **Theme — default is LIGHT.** Use light mode (`data-theme="light"`, `--bg: #f9faf5`) for all generated outputs — slides, mockups, social cards, marketing, decks — unless the user explicitly requests dark mode or the context demands it (announcement banners, dark-themed decks). The Sai product codebase uses dark by default internally, but generated outputs should be light.
+- **Logos — Simular and Sai are separate.**
+  - **Simular company logo:** geometric S-mark (`assets/simular-mark-s.png`) — black on light backgrounds, white on dark backgrounds.
+  - **Sai product logo:** green rounded square with white >|< symbol (`assets/sai-mark-green.svg`) — always green, never inverted. Used for Sai product content only.
+  - Do not use the Sai green mark as the Simular company logo.
+  - When referencing Sai from Simular-branded content, use `◆ Powered by Sai`.
 - **One chromatic accent.** Simular Lime `--as` (`#16D342`) is the only brand color. Functional accents (amber `--am`, blue `--bl`, coral `--cc`, teach-purple `--teach`, red `--r`) exist for specific states only.
 - **No emoji** in product or marketing copy — it's off-tone.
-- **Type:** Manrope for everything UI and editorial sans. JetBrains Mono for metadata, status chips, and code (uppercase-tracked is the codebase house style). Adamina is *marketing pull-quotes only* — never in the product.
+- **Type:** Manrope for everything UI and editorial sans. JetBrains Mono for metadata, status chips, and code (uppercase-tracked is the codebase house style). Adamina is *Simular marketing titles only* — never in Sai product UI.
 - **Type sizes are small and dense in product:** display 32 / h1 20 / h2 18 / h3 14 / body 14 / ui 13 / meta 12 / label 10 / mono 11. Marketing can break up to 48–88px display.
 - **Radii:** 4px controls, 8px cards, 12–16px modals/panels, 9999px pills/CTAs.
 - **Shadows:** three-step (`--sc`, `--thumb-shadow`, `--screen-shadow`). Light mode is soft warm-neutral; dark mode mostly relies on a 1px border.
