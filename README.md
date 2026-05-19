@@ -1,3 +1,52 @@
+# Simular Design — a Sai skill
+
+[![Skill](https://img.shields.io/badge/Sai-skill-16D342)](https://simular.ai) [![License](https://img.shields.io/badge/license-MIT-blue)](#license)
+
+A [Sai](https://simular.ai) skill that teaches the agent to design well-branded interfaces and assets for **Simular** ("The Autonomous Computer Company") and its product **Sai** — production code or throwaway prototypes, mocks, decks, and slides.
+
+Includes dark + light design tokens, type scale, fonts (Manrope, Adamina), the real 29-icon set, brand logos, and reference UI kits for the Sai product and the Simular marketing site.
+
+## Install
+
+**Option 1 — Sai app (recommended):**
+1. Download this repo as a ZIP: `Code → Download ZIP` (or clone and zip it).
+2. In Sai: **Settings → Skills → Import skill** and select the ZIP.
+3. The skill is now available — invoke it by asking Sai to "design", "mock up", or "build a Simular/Sai" UI.
+
+**Option 2 — clone locally:**
+```bash
+git clone https://github.com/wangyue-png/simular-design-system.git
+cd simular-design-system
+# zip it for upload
+zip -r simular-design.zip . -x ".git/*"
+```
+
+## What's inside
+
+| Path | What's in it |
+|---|---|
+| `SKILL.md` | Skill manifest Sai loads on invocation |
+| `colors_and_type.css` | Dark + light CSS variables, type scale, `@font-face` |
+| `tokens.json` / `tokens.w3c.json` | Token export (raw + W3C Design Tokens format) |
+| `assets/` | Logos, 29-icon set, integration brand logos |
+| `fonts/` | Manrope (variable) + Adamina TTFs |
+| `ui_kits/sai-app/` | Reference Sai product UI (dark + light) |
+| `ui_kits/simular-marketing/` | Marketing site reference |
+| `preview/` | Atomic specimen cards for every token and pattern |
+
+## Usage examples
+
+Once installed, try prompts like:
+- *"Design a landing page hero for a new Sai feature"*
+- *"Mock up a Sai approval banner in dark mode"*
+- *"Build a deck cover slide using the Simular brand"*
+
+## License
+
+MIT — see [`LICENSE`](./LICENSE).
+
+---
+
 # Simular Design System
 
 > **The Autonomous Computer Company** — design tokens, brand assets, and UI kits for building branded interfaces for Simular and its products.
