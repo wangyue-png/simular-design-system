@@ -1,6 +1,45 @@
+# Simular Design — a Sai skill
+
+[![Skill](https://img.shields.io/badge/Sai-skill-16D342)](https://simular.ai) [![License](https://img.shields.io/badge/license-MIT-blue)](#license)
+
+A [Sai](https://simular.ai) skill that teaches the agent to design well-branded interfaces and assets for **Simular** ("The Autonomous Computer Company") and its product **Sai** — production code or throwaway prototypes, mocks, decks, and slides.
+
+Includes light + dark design tokens, type scale, fonts (Manrope, Adamina), the real 29-icon set, brand logos, and reference UI kits for the Sai product and the Simular marketing site.
+
+## Install
+
+**Sai app (recommended):**
+1. Download this repo: `Code → Download ZIP` (or clone and zip it)
+2. In Sai: **Settings → Skills → Import skill** → select the ZIP
+3. Invoke by asking Sai to "design", "mock up", or "build a Simular/Sai" UI
+
+**Clone:**
+```bash
+git clone https://github.com/wangyue-png/simular-design-system.git
+```
+
+## What's inside
+
+| Path | What's in it |
+|---|---|
+| `SKILL.md` | Skill manifest Sai loads on invocation |
+| `colors_and_type.css` | Light + dark CSS variables, type scale, `@font-face` |
+| `tokens.json` / `tokens.w3c.json` | Token export (raw + W3C Design Tokens) |
+| `assets/` | Logos, 29-icon set, integration brand logos |
+| `fonts/` | Manrope (variable) + Adamina |
+| `ui_kits/sai-app/` | Reference Sai product UI (light + dark) |
+| `ui_kits/simular-marketing/` | Marketing site reference |
+| `preview/` | Atomic specimen cards for every token and pattern |
+
+## License
+
+MIT — see [`LICENSE`](./LICENSE).
+
+---
+
 # Simular Design System
 
-> Internal brand and design reference for Simular and Sai.
+> Open brand and design reference for Simular and Sai.
 > Use this when creating slides, marketing materials, social posts, one-pagers, or any branded visual.
 > Last updated: 2026-05-19
 
